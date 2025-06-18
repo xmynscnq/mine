@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>王五导航</title>
+  <link rel="icon" href="https://www.google.com/s2/favicons?sz=32&domain=github.io">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      box-sizing: border-box;
+      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("https://images.pexels.com/photos/1183099/pexels-photo-1183099.jpeg") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin: 30px 0;
+      background: linear-gradient(to right, #00ffe7, #3fefef);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    }
+    .search-box {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 0 auto 50px;
+      flex-wrap: wrap;
+      max-width: 800px;
+      width: 100%;
+      padding: 0 10px;
+    }
+    #engine {
+      padding: 14px 40px 14px 40px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      appearance: none;
+      background-color: #222;
+      background-repeat: no-repeat;
+      background-position: 10px center;
+      color: #fff;
+      cursor: pointer;
+      position: relative;
+    }
+    .search-box input {
+      flex: 1;
+      min-width: 300px;
+      padding: 14px 16px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+    }
+    .search-box button {
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      padding: 14px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+    }
+    .search-box button:hover {
+      background-color: #45a049;
+    }
+    .section {
+      margin: 0 auto 60px;
+      max-width: 1100px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 20px;
+    }
+    .section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-left: 6px solid #4caf50;
+      padding-left: 12px;
+      color: #fff;
+    }
+    .link-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: flex-start;
+    }
+    .card {
+      flex: 1 1 200px;
+      min-width: 180px;
+      background-color: rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, background 0.3s ease;
+    }
+    .card-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    .card img {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+    }
+    .card a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      font-size: 16px;
+      flex: 1;
+    }
+    @media (max-width: 600px) {
+      .search-box {
+        flex-direction: column;
+      }
+      .search-box input {
+        min-width: 100%;
+      }
+      #engine {
+        padding-left: 40px;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>王五导航</h1>
+  <div class="search-box">
+    <select id="engine" title="选择搜索引擎">
+      <option value="https://www.baidu.com/s?wd=" data-icon="https://www.google.com/s2/favicons?domain=baidu.com" selected>百度</option>
+      <option value="https://www.google.com/search?q=" data-icon="https://www.google.com/s2/favicons?domain=google.com">Google</option>
+      <option value="https://www.sogou.com/web?query=" data-icon="https://www.google.com/s2/favicons?domain=sogou.com">搜狗</option>
+      <option value="https://www.bing.com/search?q=" data-icon="https://www.google.com/s2/favicons?domain=bing.com">Bing</option>
+    </select>
+    <input type="text" id="searchInput" placeholder="请输入搜索关键词..." />
+    <button onclick="doSearch()">搜索</button>
+  </div>
+
+  <div class="section">
+    <h2>常用</h2>
+    <div class="link-container">
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=xydh.fun"><a href="https://xydh.fun/" target="_blank">炫猿导航</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=ipath8.com"><a href="https://ipath8.com/" target="_blank">爱路导航</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=bilibili.com"><a href="https://www.bilibili.com/" target="_blank">哔哩哔哩</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=douyin.com"><a href="https://www.douyin.com/jingxuan" target="_blank">抖音</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=douyu.com"><a href="https://www.douyu.com/" target="_blank">斗鱼</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=huya.com"><a href="https://www.huya.com/" target="_blank">虎牙</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=kuaishou.com"><a href="https://www.kuaishou.com/" target="_blank">快手</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=doubao.com"><a href="https://www.doubao.com/chat/" target="_blank">豆包</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=deepseek.com"><a href="https://chat.deepseek.com/" target="_blank">DeepSeek</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=libretv-a83.pages.dev"><a href="https://libretv-a83.pages.dev/" target="_blank">LibreTV</a></div>
+    </div>
+  </div>
+
+<div class="section">
+  <h2>工具</h2>
+  <div class="link-container">
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=alipan.com" alt="阿里云盘"><a href="https://www.alipan.com/" target="_blank">阿里云盘</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=speedtest.cn" alt="测速网"><a href="https://www.speedtest.cn/" target="_blank">测速网</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=bchrt.com" alt="大整数计算器"><a href="https://www.bchrt.com/tools/big-number-calculator/" target="_blank">大整数计算器</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=numberempire.com" alt="组合数计算器"><a href="https://zh.numberempire.com/combinatorialcalculator.php" target="_blank">组合数计算器</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=vocalremover.org" alt="人声分离"><a href="https://vocalremover.org/zh/" target="_blank">人声分离</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=snapany.com" alt="哔哩下载"><a href="https://snapany.com/zh/bilibili" target="_blank">哔哩下载</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=xitongku.com" alt="MDSN系统下载"><a href="https://www.xitongku.com/" target="_blank">MDSN系统下载</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=lrc-maker.github.io" alt="歌词LRC制作"><a href="https://lrc-maker.github.io/" target="_blank">歌词LRC制作</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=baidu.com" alt="百度AI图片助手"><a href="https://image.baidu.com/search/index" target="_blank">百度AI图片助手</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=zuohaotu.com" alt="图片拼接"><a href="http://www.zuohaotu.com/image-merge.aspx" target="_blank">图片拼接</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=xggzy.com" alt="小哥哥资源"><a href="https://www.xggzy.com/" target="_blank">小哥哥资源</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=zytnb.com" alt="资源通"><a href="https://www.zytnb.com/" target="_blank">资源通</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=cnipa.gov.cn" alt="国家知识产权局"><a href="https://www.cnipa.gov.cn/" target="_blank">国家知识产权局</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=tvbox.wpcoder.cn" alt="TVBOX官网"><a href="https://tvbox.wpcoder.cn/" target="_blank">TVBOX官网</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=pexels.com" alt="图片素材"><a href="https://www.pexels.com/zh-cn/" target="_blank">图片素材</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=link3.cc" alt="Link3"><a href="https://www.link3.cc/" target="_blank">Link3</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=tools.liumingye.cn" alt="刘明野工具"><a href="https://tools.liumingye.cn/?page=homePage#/" target="_blank">刘明野工具</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=konachan.net" alt="二次元图片"><a href="https://konachan.net/" target="_blank">二次元图片</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=haocanmou.net" alt="抖音快手业务"><a href="https://apppppss.haocanmou.net/" target="_blank">抖音快手业务</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=sucaizy.com" alt="素材资源网"><a href="https://www.sucaizy.com/" target="_blank">素材资源网</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=30aitool.com" alt="30tool"><a href="https://30aitool.com/" target="_blank">30tool</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=pc.qq.com" alt="腾讯软件中心"><a href="https://pc.qq.com/" target="_blank">腾讯软件中心</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=tools.miku.ac" alt="mikutools"><a href="https://tools.miku.ac/" target="_blank">mikutools</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=ziyuandi.cn" alt="资源帝"><a href="https://www.ziyuandi.cn/" target="_blank">资源帝</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=itheikeji.net" alt="Ddmit"><a href="https://www.itheikeji.net/" target="_blank">Ddmit</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=guozhivip.com" alt="果汁AI导航"><a href="http://guozhivip.com/ai/" target="_blank">果汁AI导航</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=yikm.net" alt="在线街机"><a href="https://www.yikm.net/" target="_blank">在线街机</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=y.qq.com" alt="腾讯音乐-启明星"><a href="https://y.qq.com/venus#/venus/user/login?redirect=%2Fai-audio%2Flist%3F" target="_blank">腾讯音乐-启明星</a></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>影视资源</h2>
+  <div class="link-container">
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=kuangren.us" alt="看片狂人"><a href="https://kuangren.us/" target="_blank">看片狂人</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=tv.baozangdh.com" alt="影视宝藏"><a href="https://tv.baozangdh.com/" target="_blank">影视宝藏</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=zhuiyingmao4.com" alt="追剧猫"><a href="https://zhuiyingmao4.com/" target="_blank">追剧猫</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=pys1.com" alt="片库"><a href="https://www.pys1.com/" target="_blank">片库</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=diz7.com" alt="丫丫影院"><a href="https://www.diz7.com/" target="_blank">丫丫影院</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=y80s.tv" alt="80S"><a href="https://y80s.tv/" target="_blank">80S</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=piaohua.com" alt="飘花电影"><a href="https://www.piaohua.com/" target="_blank">飘花电影</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=mvcat.com" alt="MVCAT"><a href="https://www.mvcat.com/" target="_blank">MVCAT</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=soushuju.cn" alt="新剧坊"><a href="http://xin.x.xin.soushuju.cn/" target="_blank">新剧坊</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=newmt.fun" alt="百万联盟网"><a href="https://m.newmt.fun/" target="_blank">百万联盟网</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=link3.cc" alt="二狗蛋网盘"><a href="https://link3.cc/vitaian" target="_blank">二狗蛋网盘</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=link3.cc" alt="少帅网盘"><a href="https://link3.cc/55ys" target="_blank">少帅网盘</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=link3.cc" alt="饼干网盘"><a href="https://link3.cc/binggan" target="_blank">饼干网盘</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=link3.cc" alt="雅幽网盘4K"><a href="https://link3.cc/4kziyuan" target="_blank">雅幽网盘4K</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=link3.cc" alt="丙的网盘"><a href="https://link3.cc/fengdzyk" target="_blank">丙的网盘</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=link3.cc" alt="网盘资源社"><a href="https://link3.cc/by998" target="_blank">网盘资源社</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=chongbuluo.com" alt="虫部落盘搜"><a href="https://search.chongbuluo.com/" target="_blank">虫部落盘搜</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=panmeme.com" alt="盘么么"><a href="http://www.panmeme.com/" target="_blank">盘么么</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=pan58.com" alt="盘58"><a href="http://www.pan58.com/" target="_blank">盘58</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=xiongdipan.com" alt="兄弟盘"><a href="https://xiongdipan.com/" target="_blank">兄弟盘</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=miaosou.fun" alt="秒搜网盘"><a href="https://miaosou.fun/" target="_blank">秒搜网盘</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=clm20241231.xn--z7xt16d.com" alt="磁力猫"><a href="https://clm20241231.xn--z7xt16d.com/" target="_blank">磁力猫</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=dygangs.net" alt="电影港"><a href="https://www.dygangs.net/" target="_blank">电影港</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=02516.com" alt="BT网站大全"><a href="http://m.02516.com/bt/" target="_blank">BT网站大全</a></div>
+    <div class="card"><img src="https://www.google.com/s2/favicons?domain=btxunlei.biz" alt="BT导航"><a href="https://btxunlei.biz/" target="_blank">BT导航</a></div>
+  </div>
+</div>
+
+  <div class="section">
+    <h2>科学上网</h2>
+    <div class="link-container">
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=mail.google.com" alt="Gmail"/><a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">Gmail</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=youtube.com" alt="YouTube"/><a href="https://www.youtube.com/" target="_blank">YouTube</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=tiktok.com" alt="TikTok"/><a href="https://www.tiktok.com/foryou?lang=zh-Hans" target="_blank">TikTok</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=instagram.com" alt="Instagram"/><a href="https://www.instagram.com/" target="_blank">Instagram</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=facebook.com" alt="Facebook"/><a href="https://www.facebook.com/" target="_blank">Facebook</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=telegram.org" alt="Telegram"/><a href="https://web.telegram.org/k/" target="_blank">Telegram</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=whatsapp.com" alt="WhatsApp"/><a href="https://web.whatsapp.com/" target="_blank">WhatsApp</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=paypal.com" alt="PayPal"/><a href="https://www.paypal.com/signin" target="_blank">PayPal</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=grailed.com" alt="Grailed"/><a href="https://www.grailed.com/" target="_blank">Grailed</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=downmp3.yt" alt="yt-download"/><a href="https://downmp3.yt/zhn2/youtube-video-downloader" target="_blank">yt-download</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=loader.to" alt="download-yt"/><a href="https://zh.loader.to/1/" target="_blank">download-yt</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=ehqx35aimmzwv.com" alt="三毛机场"/><a href="https://xn--ehqx35aimmzwv.com/" target="_blank">三毛机场</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=cloudss.org" alt="CloudSS"/><a href="https://buy.cloudss.org/index.php" target="_blank">CloudSS</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=goso001.com" alt="Apple ID"/><a href="https://goso001.com/?from=11000" target="_blank">Apple ID</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=chatgpt.com" alt="ChatGPT"/><a href="https://chatgpt.com/" target="_blank">ChatGPT</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=suno.com" alt="Suno/AI Music"/><a href="https://suno.com/create?wid=default&page=1" target="_blank">Suno/AI Music</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=x.com" alt="X"/><a href="https://x.com/home" target="_blank">X</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=github.com" alt="Github"/><a href="https://github.com/dashboard" target="_blank">Github</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=cloudflare.com" alt="Cloudflare"/><a href="https://dash.cloudflare.com/" target="_blank">Cloudflare</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=yandex.com" alt="Yandex"/><a href="https://yandex.com/" target="_blank">Yandex</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=beatoven.ai" alt="Beatoven AI music"/><a href="https://www.beatoven.ai/" target="_blank">Beatoven AI music</a></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>资源采集站</h2>
+    <div class="link-container">
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=ffzy.tv" alt="非凡资源"/><a href="http://ffzy.tv/" target="_blank">非凡资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=lzizy.com" alt="量子资源"/><a href="https://lzizy.com/" target="_blank">量子资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=taopianzy.com" alt="淘片资源"/><a href="https://www.taopianzy.com/index.html" target="_blank">淘片资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=guangsuzy.com" alt="光速资源"/><a href="https://cj.guangsuzy.com/" target="_blank">光速资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=huyazy.net" alt="虎牙资源"/><a href="https://huyazy.net/" target="_blank">虎牙资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=xinlangzy.com" alt="新浪资源"/><a href="https://xinlangzy.com/" target="_blank">新浪资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=heimuer.tv" alt="黑木耳资源"/><a href="https://www.heimuer.tv/" target="_blank">黑木耳资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=moduzy.com" alt="魔都资源"/><a href="https://moduzy.com/" target="_blank">魔都资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=jinyingzy.net" alt="金鹰资源"/><a href="https://jinyingzy.net/" target="_blank">金鹰资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=jisuzy.com" alt="极速资源"/><a href="https://www.jisuzy.com/" target="_blank">极速资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=hongniuzy.net" alt="红牛资源"/><a href="https://hongniuzy.net/" target="_blank">红牛资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=suonizy.com" alt="索尼资源"/><a href="https://suonizy.com/" target="_blank">索尼资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=kuaichezy.com" alt="快车资源"/><a href="https://kuaichezy.com/" target="_blank">快车资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=wujinzy.com" alt="无尽资源"/><a href="https://www.wujinzy.com/" target="_blank">无尽资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=yhzy.cc" alt="樱花资源"/><a href="https://yhzy.cc/" target="_blank">樱花资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=ikunzy.com" alt="ikun资源"/><a href="https://ikunzy.com/" target="_blank">ikun资源</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=xggzy.com" alt="小哥哥分享"/><a href="https://www.xggzy.com/237.html" target="_blank">小哥哥分享</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=xzhan.xlog.app" alt="X资源"/><a href="https://xzhan.xlog.app/xziyuanzhan?locale=zh" target="_blank">X资源</a></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>18+</h2>
+    <div class="link-container">
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=pornhub.com" alt="Pornhub"/><a href="https://cn.pornhub.com/" target="_blank">Pornhub</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=missav123.com" alt="MISSAV"/><a href="https://missav123.com/dm15/cn" target="_blank">MISSAV</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=mimi2022.club" alt="秘密入口"/><a href="https://www.mimi2022.club/" target="_blank">秘密入口</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=xx-map.com" alt="杏Map"/><a href="https://xx-map.com/?xxc=1669" target="_blank">杏Map</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=kuang2.cfd" alt="不良研究所"/><a href="https://5lyq.buliang224.cc/shuoye/?https://kuang2.cfd/" target="_blank">不良研究所</a></div>
+      <div class="card"><img src="https://www.google.com/s2/favicons?domain=zfp87.buzz" alt="制服癖导航"/><a href="https://1dpggd.zfp87.buzz/" target="_blank">制服癖导航</a></div>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById("searchInput");
+    const engineSelect = document.getElementById("engine");
+
+    // 初始化select图标
+    function updateSelectIcon() {
+      const selectedOption = engineSelect.options[engineSelect.selectedIndex];
+      const iconUrl = selectedOption.getAttribute("data-icon");
+      engineSelect.style.backgroundImage = `url('${iconUrl}'), url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='white' height='12' viewBox='0 0 24 24' width='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`;
+      engineSelect.style.backgroundPosition = "10px center, right 10px center";
+      engineSelect.style.backgroundRepeat = "no-repeat, no-repeat";
+    }
+    engineSelect.addEventListener("change", updateSelectIcon);
+    updateSelectIcon();
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") doSearch();
+    });
+    function doSearch() {
+      const engine = engineSelect.value;
+      const keyword = input.value.trim();
+      if (keyword) {
+        window.open(engine + encodeURIComponent(keyword), '_blank');
+      }
+    }
+  </script>
+</body>
+</html>
