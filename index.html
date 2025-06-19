@@ -1,122 +1,100 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>王五导航</title>
+  <link rel="icon" href="https://www.google.com/s2/favicons?sz=64&domain=pages.dev">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: url("https://images.pexels.com/photos/1183099/pexels-photo-1183099.jpeg?_gl=1*j61vcm*_ga*MjYwMTQyMjkxLjE3NTAxNjg0NTA.*_ga_8JE65Q40S6*czE3NTAxNjg0NDkkbzEkZzEkdDE3NTAxNjg0NjEkajQ4JGwwJGgw.jpg") no-repeat center center fixed;
+      font-family: 'Inter', sans-serif;
+      background: no-repeat center center fixed;
       background-size: cover;
-      padding: 20px;
       color: #fff;
+      padding: 2rem;
+      transition: background-image 1s ease-in-out;
     }
-
     h1 {
       text-align: center;
       font-size: 2.5rem;
-      margin-bottom: 30px;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     }
-
     .search-box {
       display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 50px;
       flex-wrap: wrap;
-      max-width: 800px;
-      margin-inline: auto;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
     }
-
-    .search-box select, .search-box input, .search-box button {
-      padding: 14px 16px;
-      font-size: 18px;
-      border: none;
-      border-radius: 10px;
-      outline: none;
-    }
-
-    .search-box input {
-      flex: 1;
-      min-width: 300px;
-    }
-
+    .search-box select,
+    .search-box input,
     .search-box button {
-      background-color: #4CAF50;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .search-box input {
+      min-width: 300px;
+      flex: 1;
+    }
+    .search-box button {
+      background: #4CAF50;
       color: white;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
-
     .search-box button:hover {
-      background-color: #45a049;
+      background: #45a049;
     }
-
     .section {
-      margin-bottom: 60px;
-      max-width: 1100px;
-      margin-inline: auto;
-      background: rgba(255, 255, 255, 0.08);
-      padding: 20px;
-      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
     }
-
     .section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
       border-left: 6px solid #4CAF50;
       padding-left: 12px;
-      color: #fff;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     }
-
     .link-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
     }
-
     .card {
-      flex: 1 1 200px;
-      min-width: 180px;
-      background-color: rgba(255, 255, 255, 0.12);
+      background-color: rgba(255, 255, 255, 0.1);
       border-radius: 12px;
-      padding: 16px;
+      padding: 1rem;
       text-align: center;
-      transition: transform 0.2s ease, background 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
     }
-
     .card:hover {
+      background-color: rgba(255, 255, 255, 0.25);
       transform: translateY(-5px);
-      background-color: rgba(255, 255, 255, 0.2);
     }
-
     .card a {
-      text-decoration: none;
       color: #fff;
+      text-decoration: none;
       font-weight: 600;
-      font-size: 16px;
+      display: block;
     }
-
     @media (max-width: 600px) {
-      .search-box {
-        flex-direction: column;
-      }
-
-      .search-box input {
-        min-width: 100%;
-      }
+      .search-box { flex-direction: column; }
+      .search-box input { min-width: 100%; }
     }
   </style>
 </head>
 <body>
   <h1>王五导航</h1>
 
-  <!-- 搜索框 -->
   <div class="search-box">
     <select id="engine">
       <option value="https://www.baidu.com/s?wd=" selected>百度</option>
@@ -133,7 +111,6 @@
     input.addEventListener("keydown", function(event) {
       if (event.key === "Enter") doSearch();
     });
-
     function doSearch() {
       const engine = document.getElementById("engine").value;
       const keyword = document.getElementById("searchInput").value.trim();
@@ -141,9 +118,24 @@
         window.open(engine + encodeURIComponent(keyword), '_blank');
       }
     }
+
+    // 自动切换背景
+    const backgrounds = [
+      'https://images.pexels.com/photos/1183099/pexels-photo-1183099.jpeg',
+      'https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg',
+      'https://images.pexels.com/photos/355465/pexels-photo-355465.jpeg',
+      'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg'
+    ];
+    let index = 0;
+    function rotateBackground() {
+      document.body.style.backgroundImage = `url('${backgrounds[index]}')`;
+      index = (index + 1) % backgrounds.length;
+    }
+    rotateBackground();
+    setInterval(rotateBackground, 60000); // 每60秒切换
   </script>
 
-  <!-- 常用 -->
+ <!-- 常用 -->
   <div class="section">
     <h2>常用</h2>
     <div class="link-container">
